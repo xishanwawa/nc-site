@@ -16,7 +16,8 @@ class Index extends React.Component {
     render() {
         return (
         	<div>
-             { this.props.children || "index" }
+            <a href = './'>主页</a><a href = './list'>列表</a>
+            { this.props.children || "index" }
           </div>
         )
     }
