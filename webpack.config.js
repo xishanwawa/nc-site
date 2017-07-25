@@ -11,7 +11,7 @@ var portNumber = '3000';
 module.exports = {
 	entry: {
           main: __dirname + "/src/main.jsx",  //入口文件
-		  vendor: ['antd']
+		  vendor: ['redux', 'react-redux', 'react-router']
 	},
 	output: {
 		//path: __dirname + "/public",    //打包后的文件存放目录
@@ -27,29 +27,18 @@ module.exports = {
 	module: {
 		loaders:[
 			{
-				test: /\.json$/,
-				exclude: /node_modules/,
-			    loader: "json"
-			},
-			{
 				test: /\.(js|jsx|ts)$/,
 				exclude: /node_modules/,
 				loader: "babel"
 			},
-			//填充style 样式
 			{
-                test: /\.(less)$/,
-	            loaders: ['style', 'css', 'less'],
+	            test: /\.(jpg|png|gif)$/,
+	            loader: 'url',
 	        },
-			{
-                test: /\.(css)$/,
-	            loaders: ['style', 'css'],
-	        }
-            // //生成独立的css文件
-		    // {
-	        //   test: /\.(less)$/,
-	        //   loader: extractCSS.extract(['css', 'less'])
-	        // },
+		    {
+	          test: /\.(less)$/,
+	          loader: extractCSS.extract(['css', 'less'])
+	        },
 		]
 	},
 	resolve: {
@@ -66,11 +55,6 @@ module.exports = {
     },
 	devtool: 'source-map',
 	plugins: [
-		new webpack.DllReferencePlugin({
-			context: __dirname,
-			manifest: require('./manifest.json'),
-		}),
-        new webpack.BannerPlugin("Copyright yangtianming Unicorns inc."), //在这个数组中new一个就可以了
         new HtmlWebpackPlugin({
 	      template: __dirname + "/src/index.tmpl.html",
 	    }),
