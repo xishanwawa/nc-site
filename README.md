@@ -1,6 +1,6 @@
 # nc-site
 
-Using react with webpack
+Using react with webpack：
 
 git clone git@github.com:xishanwawa/nc-site.git
 
