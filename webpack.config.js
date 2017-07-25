@@ -11,7 +11,7 @@ var portNumber = '3000';
 module.exports = {
 	entry: {
           main: __dirname + "/src/main.jsx",  //入口文件
-		  vendor: ['antd']
+          vendor: ['redux', 'react-redux', 'react-router']
 	},
 	output: {
 		//path: __dirname + "/public",    //打包后的文件存放目录
