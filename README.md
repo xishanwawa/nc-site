@@ -14,4 +14,5 @@ $ npm install -g cnpm --registry=https://registry.npm.taobao.org
 然后安装
 cnpm install
 
+启动项目
 npm run dev
