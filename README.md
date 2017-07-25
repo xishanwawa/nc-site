@@ -16,3 +16,10 @@ cnpm install
 
 启动项目
 npm run dev
+
+# 开发规范
+
+1: 定义一个路由routes，路由引用一个业务组件contaniner
+2: 定义触发改变方法action
+
+

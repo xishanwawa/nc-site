@@ -56,6 +56,4 @@ function mapStateToProps(state, ownProps) {
   }
 }
 
-module.exports = connect(mapStateToProps, {
-  getListDate,
-})(List)
+module.exports = connect(mapStateToProps, {getListDate})(List)

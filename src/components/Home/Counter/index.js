@@ -14,8 +14,8 @@ export default class Counter extends React.Component {
     	let value = this.props.value;
         return (
         	<div>
-	        	<h1>{value}</h1>
-            <Button type="primary"  onClick={this.props.onIncrement}>+</Button>
+	        <h1>{value}</h1>
+            <Button type="primary"  onClick={this.props.onIncrement}>+s</Button>
             <Button type="primary"  onClick={this.props.onDecrement}>-</Button>
 		    </div>
         )
