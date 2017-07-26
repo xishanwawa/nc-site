@@ -60,7 +60,7 @@ module.exports = {
 	    }),
 	    new webpack.HotModuleReplacementPlugin(),                         //热加载插件
 	    extractCSS,                                                        //生成独立文件插件，和module对应
-		new OpenBrowserPlugin({ url: 'http://localhost:3000' }),
+		new OpenBrowserPlugin({ url: 'http://' + hostIP + ':'+ portNumber +'/' }),
 		new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js"),
 		new webpack.optimize.MinChunkSizePlugin({
             minChunkSize: 10240
