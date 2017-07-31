@@ -8,6 +8,7 @@ let $$initialState = {
 export default function home($$state = Immutable.fromJS($$initialState), action){
 	switch (action.type) {
 	    case 'GET_LIST_DATA':
+	        debugger
 	        return $$state.merge({
                 loading: true
             })

@@ -34,13 +34,14 @@ const getListDate = (params) => {
             payload
         }
     }
+    debugger
 	return (dispatch) => {
 	    dispatch(fetchData('GET_LIST_DATA', {}))
 	    setTimeout(()=>{
 	  	    dispatch(fetchData('GET_LIST_DATA_SUCCESS', {data: mockData}))
 	    }, 2000)
 
-	 // reqwest({
+	   // reqwest({
      //        url: table_params.url = params.url || table_params.url,
      //        type: 'json',
      //        method: 'post',

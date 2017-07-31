@@ -5,15 +5,15 @@ const DECREMENT = 'DECREMENT';
 
 //定义方法 action
 const onIncrement = () => {
-	return (dispatch) => {
-	  dispatch({type: INCREMENT})
-	}
+	return {
+        type: INCREMENT,
+    }
 }
 
 const onDecrement = () => {
-	return (dispatch) => {
-	  dispatch({type: DECREMENT})
-	}
+	return {
+        type: DECREMENT,
+    }
 }
 
 
