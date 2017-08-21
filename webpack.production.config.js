@@ -12,9 +12,10 @@ var hostIP = 'localhost';
 var portNumber = '3000';
 
 const environments = {
-    'buildLocal': 'http://localhost:3000',
+    'buildlocal': '//localhost:3000',
+	'buildtest': 'http://static-scrm.upesn.com',
     // 正式环境
-    'build': 'http://static-scrm.upesn.com',
+    'buildup': 'http://static-scrm.upesn.com',
 };
 
 const productionEnv = environments[process.env.npm_lifecycle_event];
@@ -27,8 +28,8 @@ module.exports = {
 		  vendor: ['redux', 'react-redux', 'react-router']
 	},
 	output: {
-		path: './public',
-		publicPath: `${productionEnv}/public/`,
+		path: './lib',
+		publicPath: `${productionEnv}/lib/`,
 		filename: "[name]-min-[hash:8].js",   //打包后输出的文件名
 		chunkFilename: '[id].[chunkhash:8].chunk.js'
 	},
@@ -57,13 +58,12 @@ module.exports = {
 	resolve: {
         extensions: ["", ".js", ".jsx"],
         alias: {
-            actions: path.join(__dirname, 'src/actions'),
-            reducers: path.join(__dirname, 'src/reducers'),
-            components: path.join(__dirname, 'src/components'),
-			containers: path.join(__dirname, 'src/containers'),
+            app: path.join(__dirname, 'src/app'),
+            rootReducer: path.join(__dirname, 'src/rootReducer'),
             store: path.join(__dirname, 'src/store'),
-            routes: path.join(__dirname, 'src/routes'),
+            rootRoutes: path.join(__dirname, 'src/rootRoutes'),
 			assets: path.join(__dirname, 'src/assets'),
+			utils: path.join(__dirname, 'src/utils')
         },
     },
 	devtool: 'source-map',

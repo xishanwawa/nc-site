@@ -2,10 +2,14 @@
 
 Using react with webpack:
 
-git clone git@github.com:xishanwawa/nc-site.git
+git clone git@git.yonyou.com:cloudcrm_pc_web/nc_fit.git
 
-cd nc-site/
+cd nc_fit/
 
+#window操作系统设计一下大小写敏感
+git config core.ignorecase false
+
+#安装启动
 npm install
 
 如果npm安装比较慢，用淘宝镜像。
@@ -15,7 +19,10 @@ $ npm install -g cnpm --registry=https://registry.npm.taobao.org
 cnpm install
 
 启动项目
+
 npm run dev
+node server
+
 
 # 开发流程
 

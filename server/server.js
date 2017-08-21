@@ -18,7 +18,7 @@ function renderFullPage(html, initialState) {
         <body>
           <div id='root'>
           </div>
-          <script type="text/javascript" src="http://localhost:3000/public/start.js"></script>
+          <script type="text/javascript" src="//localhost:3000/lib/start.js"></script>
         </body>
       </html>
       `
