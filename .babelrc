@@ -16,6 +16,10 @@
   },
   "plugins": [
       "transform-object-assign",
-       ["antd"]
+      //根据less变量自定义antd样式
+      ["import", {
+        "libraryName": "antd",
+        "style": true  // 'less'
+      }]
   ]
 }
