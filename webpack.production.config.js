@@ -1,35 +1,46 @@
 //webpack.production.js
 var webpack = require('webpack');
 var path = require('path');
+
+//提取公共部分js插件
 var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
+//打包成一样css文件插件
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var extractCSS = new ExtractTextPlugin('[name]-[contenthash:8].css')
+var extractCSS = new ExtractTextPlugin('[name].min.css') 
+
+//自动填充css浏览器兼容前缀 -moz- -webkit-
 var autoprefixer = require('autoprefixer');
+
+//记录打包时间信息
 var moment = require('moment')
 var nowDateStr = moment().format("YYYY-MM-DD HH:mm:ss")
+
+//修改antd.design主题文件
+var theme = require('./theme.config.js')
 
 var hostIP = 'localhost';
 var portNumber = '3000';
 
 const environments = {
-    'buildLocal': 'http://localhost:3000',
+	// 测试环境
+	'btestw': '//172.20.18.154',
     // 正式环境
-    'build': 'http://static-scrm.upesn.com',
+    'bupw': 'http://static-scrm.upesn.com',
 };
 
-const productionEnv = environments[process.env.npm_lifecycle_event];
+const productionEnv = environments[process.env.npm_lifecycle_event] || '//172.20.18.154';
 console.log(productionEnv)
 
 
 module.exports = {
 	entry: {
           main: __dirname + "/src/main.jsx",  //入口文件
-		  vendor: ['redux', 'react-redux', 'react-router']
+		  vendor: ['redux', 'react-redux', 'react-router', 'react-router-redux', 'redux-thunk']
 	},
 	output: {
-		path: './public',
-		publicPath: `${productionEnv}/public/`,
-		filename: "[name]-min-[hash:8].js",   //打包后输出的文件名
+		path:  __dirname + '/lib',
+		publicPath: `${productionEnv}/lib/`,
+		filename: "[name].min.js",   //打包后输出的文件名
 		chunkFilename: '[id].[chunkhash:8].chunk.js'
 	},
 	externals: {
@@ -49,32 +60,30 @@ module.exports = {
 	            loader: 'url',
 	        },
 		    {
-	          test: /\.(less)$/,
-	          loader: extractCSS.extract(['css', 'less'])
+	          test: /\.(css|less)$/,
+	          loader: extractCSS.extract([
+						"css",
+						`less-loader?{"sourceMap":true,"modifyVars":${JSON.stringify(theme)}}`,
+					])
 	        },
 		]
 	},
 	resolve: {
         extensions: ["", ".js", ".jsx"],
         alias: {
-            actions: path.join(__dirname, 'src/actions'),
-            reducers: path.join(__dirname, 'src/reducers'),
-            components: path.join(__dirname, 'src/components'),
-			containers: path.join(__dirname, 'src/containers'),
+            app: path.join(__dirname, 'src/app'),
+            rootReducer: path.join(__dirname, 'src/rootReducer'),
             store: path.join(__dirname, 'src/store'),
-            routes: path.join(__dirname, 'src/routes'),
+            rootRoutes: path.join(__dirname, 'src/rootRoutes'),
 			assets: path.join(__dirname, 'src/assets'),
+			utils: path.join(__dirname, 'src/utils')
         },
     },
-	devtool: 'source-map',
+	devtool: 'cheap-module-source-map',
 	postcss:[autoprefixer()],
 	plugins: [
-	    new webpack.HotModuleReplacementPlugin(),                         //热加载插件
 	    extractCSS,                                                        //生成独立文件插件，和module对应
 		new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js"),
-		new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"production"'
-        }),
         new webpack.ProvidePlugin({
             React: 'react',
             ReactDOM: 'react-dom',
@@ -84,13 +93,13 @@ module.exports = {
             compress: {
                 warnings: false,
                 drop_console: true,
-                screw_ie8 : true
+				screw_ie8 : false
             },
         }),
 		new webpack.optimize.MinChunkSizePlugin({
             minChunkSize: 10240
         }),
-        new webpack.BannerPlugin(`用友NC \n update: ${nowDateStr}`),
+        new webpack.BannerPlugin(`yonyou_cloud_crm \n update: ${nowDateStr}`),
     ]
 }
 

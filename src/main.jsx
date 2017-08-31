@@ -1,15 +1,16 @@
-// var greeter = require('./Greeter.js');
-// document.getElementById("root").appendChild(greeter());
+
 
 import React from 'react';
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
+import { Router, Route, hashHistory, browserHistory } from 'react-router';
+
 import { store } from 'store'
-import Routes from 'routes/rootRoutes'
+import rootRoutes from 'rootRoutes'
 
 ReactDOM.render(
 	<Provider store={store}>
-        <Routes />
+        <Router routes={rootRoutes} history={browserHistory} />
     </Provider>,
 	document.getElementById('root')
 );

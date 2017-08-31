@@ -2,22 +2,25 @@
 var webpack = require('webpack');
 var path = require('path');
 var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var extractCSS = new ExtractTextPlugin('[name]-[contenthash:8].css')
-var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+//var HtmlWebpackPlugin = require('html-webpack-plugin'); //自动打开浏览器插件
+
+//修改antd.design主题文件
+var theme = require('./theme.config.js')
+
 var hostIP = 'localhost';
 var portNumber = '3000';
+
 module.exports = {
 	entry: {
-          main: __dirname + "/src/main.jsx",  //入口文件
-		  vendor: ['redux', 'react-redux', 'react-router']
+		main: __dirname + "/src/main.jsx",  //入口文件
+		vendor: ['redux', 'react-redux', 'react-router', 'react-router-redux', 'redux-thunk']
 	},
 	output: {
-		//path: __dirname + "/public",    //打包后的文件存放目录
-		publicPath: 'http://' + hostIP + ':'+ portNumber +'/',
-		filename: "[name]-[hash:8].js",   //打包后输出的文件名
-		chunkFilename: '[id].[chunkhash:8].chunk.js'
+		path: __dirname + '/lib',
+		//path: path.resolve(__dirname, "public"),
+		publicPath: '//localhost:'+portNumber+'/lib',
+		filename: "[name].min.js",   //打包后输出的文件名
+		chunkFilename: '[id].chunk.js'
 	},
 	externals: {
         react: 'React',
@@ -35,46 +38,43 @@ module.exports = {
 	            test: /\.(jpg|png|gif)$/,
 	            loader: 'url',
 	        },
-		    {
-	          test: /\.(less)$/,
-	          loader: extractCSS.extract(['css', 'less'])
-	        },
+			{
+            test: /\.(less)$/,
+            loaders:[
+						"style",
+						"css",
+						`less-loader?{"sourceMap":true,"modifyVars":${JSON.stringify(theme)}}`,
+					]
+			}
 		]
 	},
 	resolve: {
         extensions: ["", ".js", ".jsx"],
         alias: {
-            actions: path.join(__dirname, 'src/actions'),
-            reducers: path.join(__dirname, 'src/reducers'),
-            components: path.join(__dirname, 'src/components'),
-			containers: path.join(__dirname, 'src/containers'),
+            app: path.join(__dirname, 'src/app'),
+            rootReducer: path.join(__dirname, 'src/rootReducer'),
             store: path.join(__dirname, 'src/store'),
-            routes: path.join(__dirname, 'src/routes'),
+            rootRoutes: path.join(__dirname, 'src/rootRoutes'),
 			assets: path.join(__dirname, 'src/assets'),
+			utils: path.join(__dirname, 'src/utils')
         },
     },
-	devtool: 'source-map',
+	devtool: 'cheap-module-eval-source-map',
 	plugins: [
-        new HtmlWebpackPlugin({
-	      template: __dirname + "/src/index.tmpl.html",
-	    }),
 	    new webpack.HotModuleReplacementPlugin(),                         //热加载插件
-	    extractCSS,                                                        //生成独立文件插件，和module对应
-		new OpenBrowserPlugin({ url: 'http://' + hostIP + ':'+ portNumber +'/' }),
 		new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js"),
 		new webpack.optimize.MinChunkSizePlugin({
             minChunkSize: 10240
         }),
     ],
 	devServer: {
-		headers: {
+	    headers: {
             "Access-Control-Allow-Origin": "*"
         },
-		contentBase: "./public",                                          //本地服务器所加载的页面所在的目录
-	    colors: true,                                                     //终端中输出结果为彩色
-	    historyApiFallback: true,                                         //不跳转
-	    inline: true,                                                     //实时刷新
-	    hot: true,
-	    port: 3000,
+        devtool: 'eval',
+        hot: true,
+        inline: true,
+        port: portNumber,
+        host: hostIP
 	}
 }

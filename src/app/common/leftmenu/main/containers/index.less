@@ -1,0 +1,54 @@
+.leftmenu {
+    width:70px;
+    height:600px;
+    background: #5F6671;
+}
+
+.left_menuitem {
+    height: 70px;
+    padding: 8px 0;
+    border-bottom: 1px solid #606D7C;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.left_menuitem:hover {
+    background: #434952;
+}
+.left_menuitem_icon {
+    margin-bottom: 5px;
+    margin-top:5px;
+}
+.left_menuitem_title {
+    color:white;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+.left_submenu {
+    display: none;
+    position: absolute;
+    left: 70px;
+    top: 0px;
+    background: #5F6671;
+    z-index:1;
+}
+
+.left_submenu:hover {
+    display: block;
+}
+
+.left_submenu_title {
+    width: 90px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.left_submenu_title:hover {
+    background: #434952;
+}
+
+.left_menuitem:hover .left_submenu{
+    display: block;
+}
