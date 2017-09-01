@@ -17,7 +17,7 @@ function renderFullPage(html, initialState) {
           <script type="text/javascript"  src="http://localhost:3000/lib/vendor.bundle.js"></script>
         </head>
         <body>
-          <div id='root'>
+          <div id='root' class="full-height" >
           </div>
           <script type="text/javascript"  src="http://localhost:3000/lib/main.min.js"></script>
         </body>

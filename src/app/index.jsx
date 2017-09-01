@@ -8,10 +8,26 @@ import './index.less'
 const { Header, Footer, Sider, Content } = Layout;
 
 class Main extends React.Component {
+    // render() {
+
+    //     return <div className = "boxed-layout">
+    //         <Layout>
+    //             <MyHeader />
+
+    //             <Layout>
+    //                 <Sider width={70}>
+    //                     <LeftMenu dataSource={[]} />
+    //                 </Sider>
+    //                 <Content>
+    //                     {this.props.children}
+    //                 </Content>
+    //             </Layout>
+    //         </Layout>
+    //     </div>
+    // }
     render() {
 
-        return <div className = "boxed-layout">
-            <Layout>
+        return <Layout>
                 <MyHeader />
 
                 <Layout>
@@ -23,7 +39,6 @@ class Main extends React.Component {
                     </Content>
                 </Layout>
             </Layout>
-        </div>
     }
 }
 
