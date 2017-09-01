@@ -1,5 +1,5 @@
 
-import projectList from 'app/project/list/containers';
+import projectList from 'components/project/list/container';
 
 const route = {
   path: 'list',

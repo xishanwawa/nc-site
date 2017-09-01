@@ -23,9 +23,9 @@ var portNumber = '3000';
 
 const environments = {
 	// 测试环境
-	'btest': '//172.20.18.154',
+	'btestw': '//172.20.18.154',
     // 正式环境
-    'bup': 'http://static-scrm.upesn.com',
+    'bupw': 'http://static-scrm.upesn.com',
 };
 
 const productionEnv = environments[process.env.npm_lifecycle_event] || '//172.20.18.154';

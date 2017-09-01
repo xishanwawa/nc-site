@@ -10,14 +10,14 @@ function renderFullPage(html, initialState) {
       <html lang="en">
         <head>
           <meta charset="utf-8">
-          <title>crmweb</title>
+          <title>cloud_crm</title>
           <script src="//cdn.bootcss.com/react/0.14.7/react.min.js"></script>
           <script src="//cdn.bootcss.com/react/0.14.7/react-dom.min.js"></script>
           <script src="//cdn.bootcss.com/immutable/3.8.1/immutable.min.js"></script>
           <script type="text/javascript"  src="http://localhost:3000/lib/vendor.bundle.js"></script>
         </head>
         <body>
-          <div id='root' class="full-height" >
+          <div class="full-height">
           </div>
           <script type="text/javascript"  src="http://localhost:3000/lib/main.min.js"></script>
         </body>

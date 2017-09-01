@@ -102,23 +102,14 @@ class LoginCon extends React.Component {
     constructor(props){
         super(props);
     }
+
     componentDidMount() {
     }
     
     render() {
-        const { $$state } = this.props;
-        const token = $$state.get("token");
-        const user = $$state.get("user");
-        if(token) {
-            message.info("Login Success");
-            browserHistory.push('/project');
-        }
-        else if(user) {
-            message.info("Login Failed");
-        }
         return (
             <div style={{ width: "300px" }}>
-             <Login login = {this.props.action.login} />
+               <Login login = {this.props.action.login} />
             </div>
         );
     }

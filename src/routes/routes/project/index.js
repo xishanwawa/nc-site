@@ -4,7 +4,7 @@
 
  const route = {
   path: 'project',
-  indexRoute: { component: require('app/project/list/containers/') },
+  indexRoute: { component: require('components/project/list/container') },
   getChildRoutes(partialNextState, cb) {
     require.ensure([], (require) => {
       cb(null, [

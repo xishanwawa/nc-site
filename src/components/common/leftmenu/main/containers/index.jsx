@@ -25,15 +25,14 @@ export default class LeftMenu extends React.Component {
             child:[{
                 title:"项目管理",
                 url:"/project",
-            }]
+            },
+            {
+                title:"项目管理",
+                url:"/project",
+            }
+            ]
         },{
             title:"渠道行销",
-            icon:<Icon  style={{ fontSize: 16, color: 'white' }} type="line-chart" />,
-        },{
-            title:"市场营销",
-            icon:<Icon  style={{ fontSize: 16, color: 'white' }} type="line-chart" />,
-        },{
-            title:"销售管理",
             icon:<Icon  style={{ fontSize: 16, color: 'white' }} type="line-chart" />,
         }];
         return leftMenuItem.map((item) => {

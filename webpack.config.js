@@ -27,6 +27,17 @@ module.exports = {
         'react-dom': 'ReactDOM',
 		immutable: 'Immutable'
     },
+	resolve: {
+        extensions: ["", ".js", ".jsx"],
+        alias: {
+            components: path.join(__dirname, 'src/components'),
+            reducers: path.join(__dirname, 'src/reducers'),
+            store: path.join(__dirname, 'src/store'),
+            routes: path.join(__dirname, 'src/routes'),
+			assets: path.join(__dirname, 'src/assets'),
+			utils: path.join(__dirname, 'src/utils')
+        },
+    },
 	module: {
 		loaders:[
 			{
@@ -39,26 +50,15 @@ module.exports = {
 	            loader: 'url',
 	        },
 			{
-            test: /\.(less)$/,
-            loaders:[
-						"style",
-						"css",
-						`less-loader?{"sourceMap":true,"modifyVars":${JSON.stringify(theme)}}`,
-					]
+				test: /\.(less)$/,
+				loaders:[
+					"style",
+					"css",
+					`less-loader?{"sourceMap":true,"modifyVars":${JSON.stringify(theme)}}`,
+				]
 			}
 		]
 	},
-	resolve: {
-        extensions: ["", ".js", ".jsx"],
-        alias: {
-            app: path.join(__dirname, 'src/app'),
-            rootReducer: path.join(__dirname, 'src/rootReducer'),
-            store: path.join(__dirname, 'src/store'),
-            rootRoutes: path.join(__dirname, 'src/rootRoutes'),
-			assets: path.join(__dirname, 'src/assets'),
-			utils: path.join(__dirname, 'src/utils')
-        },
-    },
 	devtool: 'cheap-module-eval-source-map',
 	plugins: [
 	    new webpack.HotModuleReplacementPlugin(),                         //热加载插件
