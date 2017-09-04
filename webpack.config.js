@@ -41,7 +41,7 @@ module.exports = {
 	module: {
 		loaders:[
 			{
-				test: /\.(js|jsx|ts)$/,
+				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				loader: "babel"
 			},
@@ -66,12 +66,15 @@ module.exports = {
 		new webpack.optimize.MinChunkSizePlugin({
             minChunkSize: 10240
         }),
+		new webpack.DefinePlugin({
+            'process.env.NODE_ENV': '"development"'
+        })
     ],
 	devServer: {
 	    headers: {
             "Access-Control-Allow-Origin": "*"
         },
-        devtool: 'eval',
+        devtool: 'cheap-module-eval-source-map',
         hot: true,
         inline: true,
         port: portNumber,

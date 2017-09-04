@@ -1,44 +1,39 @@
 
 import React, { Component, PropTypes } from 'react'
 import { Layout   } from 'antd';
-import LeftMenu from 'app/common/leftmenu/main/containers'
-import MyHeader from 'app/common/header/main/containers'
+import Menu from 'components/common/menu/container'
+import Header from 'components/common/header/container'
 import './index.less'
 
-const { Header, Footer, Sider, Content } = Layout;
-
 class Main extends React.Component {
-    // render() {
+    constructor(props) {
+        super(props);
+        this.state = {
+            collapsed: false,
+        }
+    }
 
-    //     return <div className = "boxed-layout">
-    //         <Layout>
-    //             <MyHeader />
+    toggleCollapsed = () => {
+        this.setState({
+            collapsed: !this.state.collapsed,
+        });
+    }
 
-    //             <Layout>
-    //                 <Sider width={70}>
-    //                     <LeftMenu dataSource={[]} />
-    //                 </Sider>
-    //                 <Content>
-    //                     {this.props.children}
-    //                 </Content>
-    //             </Layout>
-    //         </Layout>
-    //     </div>
-    // }
     render() {
-
-        return <Layout>
-                <MyHeader />
-
-                <Layout>
-                    <Sider width={70}>
-                        <LeftMenu dataSource={[]} />
-                    </Sider>
-                    <Content>
-                        {this.props.children}
-                    </Content>
-                </Layout>
-            </Layout>
+        return <div className="app-container full-height">
+            <Header  
+                collapsed = {this.state.collapsed} 
+                toggleCollapsed = {this.toggleCollapsed} 
+            />
+            <div className="app-body">
+                <Menu 
+                    collapsed = {this.state.collapsed} 
+                />
+                <div className="app-content">
+                    { this.props.children || "not indexRouter" }
+                </div>
+            </div>
+        </div>
     }
 }
 

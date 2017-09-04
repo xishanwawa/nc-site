@@ -1,5 +1,5 @@
 import { Form, Icon, Input, Button, Checkbox,message } from 'antd';
-import  * as Actions  from 'app/login/main/actions'
+import  * as Actions  from '../action'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { browserHistory } from 'react-router'

@@ -8,13 +8,10 @@ import { bindActionCreators } from 'redux'
 import { Table, Icon, Modal, Form, Progress, Row, Col, Button, Checkbox, Layout } from 'antd';
 
 import Query from './Query'
-import Card from 'app/project/card/containers'
-import { deptRef, userRef, typeEnum } from 'app/project/valuemap'
-
 import './index.less'
 
 //导入action方法
-import * as Actions from "app/project/list/actions"
+import * as Actions from "../action"
 //导入ant组件
 
 const { Header, Footer, Sider, Content } = Layout;
