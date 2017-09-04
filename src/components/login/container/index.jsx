@@ -3,35 +3,21 @@ import  * as Actions  from '../action'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { browserHistory } from 'react-router'
-
+import "./index.less"
 
 const FormItem = Form.Item;
 
 class LoginForm extends React.Component {
     constructor(props){
         super(props);
-        this.state = {
-            user:"",
-            password:"",
-            token:undefined,
-        }
     }
 
     componentDidMount() {
-        // To disabled submit button at the beginning.
-        this.props.form.validateFields();
     }
+
     handleSubmit = (e) => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                console.log('Received values of form: ', values);
-            }
-        });
-        const { getFieldsValue } = this.props.form;
-        let a = this.props.action;
-        this.props.login(getFieldsValue());
     }
+    
     render() {
 
         const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
@@ -39,7 +25,8 @@ class LoginForm extends React.Component {
         const userError = isFieldTouched('user') && getFieldError('user');
         const passwordError = isFieldTouched('password') && getFieldError('password');
         return (
-            <div className="loginform">
+            <div className="login-form">
+                
                 <Form onSubmit={this.handleSubmit} width={200}>
                     <FormItem
                         validateStatus={userError ? 'error' : ''}
@@ -48,7 +35,7 @@ class LoginForm extends React.Component {
                         {getFieldDecorator('user', {
                             rules: [{ required: true, message: 'Please input your userName!' }],
                         })(
-                            <Input placeholder="userName" />
+                            <Input placeholder="用户名..." />
                         )}
                     </FormItem>
                     <FormItem
@@ -58,7 +45,7 @@ class LoginForm extends React.Component {
                         {getFieldDecorator('password', {
                             rules: [{ required: true, message: 'Please input your Password!' }],
                         })(
-                            <Input type="password" placeholder="Password" />
+                            <Input type="password" placeholder="密码..." />
                         )}
                     </FormItem>
                     <FormItem>
@@ -67,17 +54,17 @@ class LoginForm extends React.Component {
                             initialValue: true,
                         })(
                             <Checkbox >
-                                Remember Me
+                                记住状态
                             </Checkbox>
                         )}
-                        <a style={{ float: "right" }} href="">Forgot password</a>
+                        <a style={{ float: "right" }} href="">忘记密码</a>
                         <Button
                             type="primary"
                             htmlType="submit"
                             disabled={hasErrors(getFieldsError())}
                             style={{ width: "100%" }}
                         >
-                            Log in
+                            登录
                         </Button>
                     </FormItem>
                 </Form>
@@ -108,7 +95,8 @@ class LoginCon extends React.Component {
     
     render() {
         return (
-            <div style={{ width: "300px" }}>
+            <div className="login-box" >
+               <div className="login-tit">Cloud crm 登录</div>
                <Login login = {this.props.action.login} />
             </div>
         );
