@@ -1,7 +1,7 @@
  
- export default {
-  path: 'project',
-  indexRoute: { component: require('components/project/list/container').default },
+export default {
+  path: 'user',
+  indexRoute: { component: require('components/user/list/container').default },
   getChildRoutes(partialNextState, cb) {
     require.ensure([], (require) => {
       cb(null, [

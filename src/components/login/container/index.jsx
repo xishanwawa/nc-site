@@ -27,13 +27,13 @@ class LoginForm extends React.Component {
         return (
             <div className="login-form">
                 
-                <Form onSubmit={this.handleSubmit} width={200}>
+                <Form onSubmit={this.handleSubmit} width={300}>
                     <FormItem
                         validateStatus={userError ? 'error' : ''}
                         help={userError || ''}
                     >
                         {getFieldDecorator('user', {
-                            rules: [{ required: true, message: 'Please input your userName!' }],
+                            rules: [{ required: true, message: '不能为空!' }],
                         })(
                             <Input placeholder="用户名..." />
                         )}
@@ -43,7 +43,7 @@ class LoginForm extends React.Component {
                         help={passwordError || ''}
                     >
                         {getFieldDecorator('password', {
-                            rules: [{ required: true, message: 'Please input your Password!' }],
+                            rules: [{ required: true, message: '不能为空!' }],
                         })(
                             <Input type="password" placeholder="密码..." />
                         )}
@@ -96,14 +96,14 @@ class LoginCon extends React.Component {
     render() {
         return (
             <div className="login-box" >
-               <div className="login-tit">Cloud crm 登录</div>
+               <div className="login-tit">CLOUD CRM</div>
                <Login login = {this.props.action.login} />
             </div>
         );
     }
 }
 
-module.exports = connect(
+export default connect(
     state => {
         return {
             $$state : state.login

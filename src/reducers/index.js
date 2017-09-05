@@ -1,12 +1,19 @@
-import {combineReducers} from 'redux'
+import { combineReducers } from 'redux'
+
+
+import login from 'components/login/reducer'
 
 //project目录
-import login from 'components/login/reducer'
 import projectList from 'components/project/list/reducer'
 
+//user目录
+import userlist from 'components/user/list/reducer'
+
+
 let rootReducer = combineReducers({
-    projectList,
     login,
+    projectList,
+    userlist,
  });
 
-export {rootReducer}
+export { rootReducer }

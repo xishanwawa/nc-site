@@ -1,6 +1,6 @@
 
 import React, { Component, PropTypes } from 'react'
-import { browserHistory } from 'react-router'
+import { browserHistory, Link } from 'react-router'
 
 import { Menu, Icon } from 'antd';
 const SubMenu = Menu.SubMenu;
@@ -24,9 +24,21 @@ export default class LeftMenu extends React.Component {
                 mode="inline"
                 inlineCollapsed={this.props.collapsed}
             >
-                <SubMenu key="sub1" title={<span><Icon type="appstore" /><span>用户管理</span></span>}>
-                    <Menu.Item key="1">新增用户1</Menu.Item>
-                    <Menu.Item key="2">用户列表</Menu.Item>
+                <Menu.Item key="1">
+                    <Link to="/crmweb/project">
+                        <Icon type="pie-chart" />
+                        <span>项目</span>
+                    </Link>
+                </Menu.Item>
+                <Menu.Item key="2">
+                    <Link to="/crmweb/user">
+                        <Icon type="user" />
+                        <span>用户</span>
+                    </Link>
+                </Menu.Item>
+                <SubMenu key="sub1" title={<span><Icon type="appstore" /><span>二级菜单demo</span></span>}>
+                    <Menu.Item key="3">菜单3</Menu.Item>
+                    <Menu.Item key="4">菜单4</Menu.Item>
                 </SubMenu>
             </Menu>
             );
