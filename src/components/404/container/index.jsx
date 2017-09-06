@@ -12,7 +12,7 @@ class Home extends React.Component {
 
     render() {
         return <div>
-            <div className="app-welcome">welcome to clond crmweb</div>
+            <div className="app-404">404：客官，您迷路了！</div>
         </div>
     }
 }

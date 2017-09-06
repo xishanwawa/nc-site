@@ -16,13 +16,13 @@ const rootRoutes = {
       path: '/crmweb',
       getComponents(location, cb) {
         require.ensure([], function (require) {
-          cb(null,  require('components/home/container').default)
+          cb(null,  require('components').default)
         })
       },
       getIndexRoute(location, cb) {
         require.ensure([], function (require) {
           cb(null, {
-            component: require('components/project/list/container').default
+            component: require('components/home/container').default
           })
         })
       },
@@ -34,6 +34,14 @@ const rootRoutes = {
           ])
         })
       },
+    },
+    {
+      path: '*',
+      getComponents(location, cb) {
+        require.ensure([], function (require) {
+          cb(null,  require('components/404/container').default)
+        })
+      }
     }
   ]
 }

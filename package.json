@@ -2,7 +2,7 @@
   "name": "cloud_crm",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/main.js",
   "scripts": {
     "dev": "webpack-dev-server --progress --colors --display-error-details --display-modules --config ./webpack.config.js",
     "btest": "NODE_ENV=production && webpack --config ./webpack.production.config.js --progress",
@@ -43,7 +43,7 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
-    "antd": "^2.0.0-beta.13",
+    "antd": "^2.13.0",
     "express": "^4.14.0",
     "immutable": "^3.8.1",
     "moment": "^2.12.0",

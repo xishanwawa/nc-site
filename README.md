@@ -26,19 +26,22 @@ node server
 
 # 开发流程
 
-1， 目录：routes，定义一个路由，路由引用一个业务组件contaniner
-2   目录：contaniner，定义业务组件绑定actions输出的方法与reduser输入的状态（自定义UI组件在）
-2， 目录：actions，定义方法触发action,  
-3， 目录：reduser，定义reduser, 根据 action.type 改变数据
+1， 目录：routes，定义一个路由，路由引用一个components目录下业务组件container文件夹
+2   目录：components，定义业务目录 目录包括 container, action, reducer（自定义公共UI组件在common）
+3， 目录：reducers，根reducer引用components目录各业务reducer文件夹
+4， 目录：assets， 存放自定义静态资源，图片images, 额外css，
+5， 目录：utils, 存放自定义方法，如包装ajax方法，获取cookie登录状态和个人信息等。
+4， 目录：store, 总状态生成目录
+
 
 # 开发规范
 
 组件命名大写开始
 
-组件目录与组件命名同名
+组件目录与组件命名联系（目录不用大选开头）
 
-actionTypes 全部大写
+actionType 全部大写并且全局唯一 例如 “GET_USERLIST_INFO”
 
-reduser 根据action.type修改 
+reduser 根据actionType修改状态
 
-contaniner 绑定state用两个$   例如$$stateHome: state.home
+contaniner 绑定state用两个$$   例如$$stateHome: state.home
