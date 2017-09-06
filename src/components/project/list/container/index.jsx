@@ -52,7 +52,6 @@ class List extends React.Component {
     return (
       <div>
          <div className="breadcrumb">项目</div>
-         <div className="search-box"></div>
          <div className="list-box">
              <Table dataSource={dataSource} columns={columns} />
          </div>

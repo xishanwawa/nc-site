@@ -1,5 +1,5 @@
 body {
-	background: #f7f7f7;
+	background-color: #e5e5e5;
 }
 .full-height {
     height: 100%;
@@ -7,7 +7,14 @@ body {
 
 .app-container {
     display: flex;
+    margin: auto;
     flex-direction: column;
+    max-width: 100%;
+    transition: max-width .35s ease;
+    &.boxed-layout {
+        max-width: 1200px;
+        box-shadow: 0 0 1px rgba(0,0,0,.2);
+    }
 }
 
 .app-header {

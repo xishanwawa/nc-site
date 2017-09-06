@@ -96,7 +96,7 @@ class LoginCon extends React.Component {
     render() {
         return (
             <div className="login-box" >
-               <div className="login-tit">CLOUD CRM</div>
+               <div className="login-tit">Cloud CRM</div>
                <Login login = {this.props.action.login} />
             </div>
         );

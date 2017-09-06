@@ -1,8 +1,9 @@
 
 import React, { Component, PropTypes } from 'react'
-import { Layout   } from 'antd';
 import Menu from 'components/common/menu/container'
 import Header from 'components/common/header/container'
+import ViewStyle from 'components/common/viewstyle/container'
+
 import './index.less'
 
 class Main extends React.Component {
@@ -10,6 +11,7 @@ class Main extends React.Component {
         super(props);
         this.state = {
             collapsed: false,
+            viewBoxstyle: false
         }
     }
 
@@ -18,9 +20,16 @@ class Main extends React.Component {
             collapsed: !this.state.collapsed,
         });
     }
+    
+    toggleViewBox = (checked) => {
+        this.setState({
+            viewBoxstyle: checked
+        });
+    }
 
     render() {
-        return <div className="app-container full-height">
+        let viewBoxstyle = this.state.viewBoxstyle ? "app-container full-height boxed-layout" : "app-container full-height";
+        return <div className={viewBoxstyle}>
             <Header  
                 collapsed = {this.state.collapsed} 
                 toggleCollapsed = {this.toggleCollapsed} 
@@ -33,6 +42,7 @@ class Main extends React.Component {
                     { this.props.children || "not indexRouter" }
                 </div>
             </div>
+            <ViewStyle toggleViewBox = {this.toggleViewBox} />
         </div>
     }
 }
