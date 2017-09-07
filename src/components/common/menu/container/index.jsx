@@ -20,25 +20,30 @@ export default class LeftMenu extends React.Component {
         return (
             <Menu
                 defaultSelectedKeys={['1']}
-                defaultOpenKeys={['sub1']}
                 mode="inline"
                 inlineCollapsed={this.props.collapsed}
             >
                 <Menu.Item key="1">
+                    <Link to="/crmweb">
+                        <Icon type="home" />
+                        <span>主页</span>
+                    </Link>
+                </Menu.Item>
+                <Menu.Item key="2">
                     <Link to="/crmweb/project">
                         <Icon type="pie-chart" />
                         <span>项目</span>
                     </Link>
                 </Menu.Item>
-                <Menu.Item key="2">
+                <Menu.Item key="3">
                     <Link to="/crmweb/user">
                         <Icon type="user" />
                         <span>用户</span>
                     </Link>
                 </Menu.Item>
                 <SubMenu key="sub1" title={<span><Icon type="appstore" /><span>二级菜单demo</span></span>}>
-                    <Menu.Item key="3">菜单3</Menu.Item>
-                    <Menu.Item key="4">菜单4</Menu.Item>
+                    <Menu.Item key="4">菜单3</Menu.Item>
+                    <Menu.Item key="5">菜单4</Menu.Item>
                 </SubMenu>
             </Menu>
             );
