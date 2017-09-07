@@ -23,37 +23,47 @@ class List extends React.Component {
   }
 
   render() {
-    const dataSource = [{
-      key: '1',
-      name: '胡彦斌',
-      age: 32,
-      address: '西湖区湖底公园1号'
+    const columns = [{
+      title: 'Name',
+      dataIndex: 'name',
+      render: text => <a href="#">{text}</a>,
     }, {
-      key: '2',
-      name: '胡彦祖',
-      age: 42,
-      address: '西湖区湖底公园1号'
+      title: 'Cash Assets',
+      className: 'column-money',
+      dataIndex: 'money',
+    }, {
+      title: 'Address',
+      dataIndex: 'address',
     }];
 
-    const columns = [{
-      title: '姓名',
-      dataIndex: 'name',
-      key: 'name',
+    const data = [{
+      key: '1',
+      name: 'John Brown',
+      money: '￥300,000.00',
+      address: 'New York No. 1 Lake Park',
     }, {
-      title: '年龄',
-      dataIndex: 'age',
-      key: 'age',
+      key: '2',
+      name: 'Jim Green',
+      money: '￥1,256,000.00',
+      address: 'London No. 1 Lake Park',
     }, {
-      title: '住址',
-      dataIndex: 'address',
-      key: 'address',
+      key: '3',
+      name: 'Joe Black',
+      money: '￥120,000.00',
+      address: 'Sidney No. 1 Lake Park',
     }];
 
     return (
       <div>
          <div className="breadcrumb">用户管理</div>
          <div className="list-box">
-             <Table dataSource={dataSource} columns={columns} />
+             <Table
+                columns={columns}
+                dataSource={data}
+                bordered
+                title={() => 'Header'}
+                footer={() => 'Footer'}
+              />
          </div>
       </div>
     )
