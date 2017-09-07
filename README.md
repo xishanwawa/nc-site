@@ -23,6 +23,8 @@ cnpm install
 npm run dev
 node server
 
+打开localhost:8081/crmweb
+
 
 # 开发流程
 
