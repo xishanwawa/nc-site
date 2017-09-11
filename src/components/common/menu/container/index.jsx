@@ -55,6 +55,14 @@ export default class LeftMenu extends React.Component {
                         </Link>
                     </Menu.Item>
                 </SubMenu>
+                <SubMenu key="sub3" title={<span><Icon type="appstore" /><span>Navigation Two</span></span>}>
+                    <Menu.Item key="9">Option 9</Menu.Item>
+                    <Menu.Item key="10">Option 10</Menu.Item>
+                    <SubMenu key="sub4" title="Submenu">
+                    <Menu.Item key="11">Option 11</Menu.Item>
+                    <Menu.Item key="12">Option 12</Menu.Item>
+                    </SubMenu>
+                </SubMenu>
             </Menu>
             );
     }
