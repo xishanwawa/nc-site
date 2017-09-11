@@ -3,6 +3,7 @@
  * 参数：request库参数
  * 创建日期：2017-8-1
  */
+import { browserHistory } from 'react-router'
 
 import request from 'reqwest'
 request.ajaxSetup({
@@ -21,7 +22,7 @@ const reqwest = (options)=> {
             if (resp.error_code == 10001) {
                 // 开启本地代理时, 跳转到代理服务器
                 if (/proxy/.test(options.url)) {
-                    return window.location.href = window.location.origin + '/login'
+                    browserHistory.push('/login')
                 }
                 return window.location.href = resp.data.url
             }

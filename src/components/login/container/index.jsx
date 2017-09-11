@@ -16,6 +16,7 @@ class LoginForm extends React.Component {
     }
 
     handleSubmit = (e) => {
+        browserHistory.push('/crmweb')
     }
     
     render() {
