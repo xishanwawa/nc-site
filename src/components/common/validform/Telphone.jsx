@@ -27,78 +27,12 @@ export default class LeftMenu extends React.Component {
     }
 
     renderMenu = () => {
-
-        // const data = [
-        //     {
-        //         "webId":"#",
-        //         "name":"主页",
-        //         "id":"sub1",
-        //         "child":[{
-        //             "webId":"#",
-        //             "name":"项目管理",
-        //             "id":2,
-        //             "parentId":1,
-        //             },{
-        //             "webId":"#",
-        //             "name":"项目不管理",
-        //             "id":3,
-        //             "parentId":1
-        //             }
-        //         ]
-        //     },
-        //     {
-        //         "webId":"#",
-        //         "name":"用户",
-        //         "id":"sub2",
-        //         "child":[{
-        //             "webId":"#",
-        //             "name":"用户管理",
-        //             "id":5,
-        //             "parentId":4,
-        //             },{
-        //             "webId":"#",
-        //             "name":"角色管理",
-        //             "id":6,
-        //             "parentId":4
-        //             }
-        //         ]
-        //     }
-	    // ]
-        
-        // function tree(data){
-        //     return data.map((item) => {
-        //         if(item.child){
-        //             return <SubMenu  key={item.id} title = {item.name}>
-        //                 {tree(item.child)}
-        //             </SubMenu>
-        //         }else{
-        //             return <Menu.Item key={item.id}>
-        //                 <Link to="/crmweb">
-        //                     <span>{item.name}</span>
-        //                 </Link>
-        //             </Menu.Item>
-        //         }
-        //     })
-        // };
-
-        // return (
-        //     <Menu
-        //       mode="inline"
-        //       selectedKeys = {this.state.selectedKeys}
-        //       onSelect = {this.onSelect}
-        //     >
-        //        {tree(data)}
-        //     </Menu>
-        // )
-
-
         return (
             <Menu
                 defaultSelectedKeys = {["1"]}
                 selectedKeys = {this.state.selectedKeys}
                 mode="inline"
                 inlineCollapsed={this.props.collapsed}
-                theme={"dark"}
                 onSelect = {this.onSelect}
             >
                 <Menu.Item key="1">
@@ -120,6 +54,14 @@ export default class LeftMenu extends React.Component {
                             <span>用户管理</span>
                         </Link>
                     </Menu.Item>
+                </SubMenu>
+                <SubMenu key="sub3" title={<span><Icon type="appstore" /><span>Navigation Two</span></span>}>
+                    <Menu.Item key="9">Option 9</Menu.Item>
+                    <Menu.Item key="10">Option 10</Menu.Item>
+                    <SubMenu key="sub4" title="Submenu">
+                    <Menu.Item key="11">Option 11</Menu.Item>
+                    <Menu.Item key="12">Option 12</Menu.Item>
+                    </SubMenu>
                 </SubMenu>
             </Menu>
             );

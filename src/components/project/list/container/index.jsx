@@ -5,7 +5,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Table, Icon, Modal, Form, Progress, Row, Col, Button, Checkbox, Layout } from 'antd';
+import moment from 'moment';
+import { Table, Icon, Modal, Form, Progress, Row, Col, Button, Checkbox, Layout, DatePicker } from 'antd';
 import './index.less'
 
 //导入action方法
@@ -14,12 +15,23 @@ import * as Actions from "../action"
 class List extends React.Component {
   constructor(props) {
     super(props)
+    var start  = moment().startOf('week');
+    var end    = moment().endOf('week');
+
+    debugger
     this.state = {
+      date : "2017-09-12"
     }
   }
 
   componentDidMount() {
     //this.props.action.getListData();
+  }
+
+  changeDate = (date, dateString) => {
+    this.setState({
+      date: dateString
+    })
   }
 
   render() {
@@ -52,6 +64,18 @@ class List extends React.Component {
     return (
       <div>
          <div className="breadcrumb">项目管理</div>
+         <div className= "search-list">
+          <Row>
+              <Col span={2}>日期</Col>
+              <Col span={4}>
+                  <DatePicker value = {moment(this.state.date)} onChange={this.changeDate} />
+              </Col>
+              <Col span={2}>金额</Col>
+              <Col span={4}>
+                  <DatePicker value = {moment(this.state.date)} onChange={this.changeDate} />
+              </Col>
+          </Row>
+         </div>
          <div className="list-box">
              <Table dataSource={dataSource} columns={columns} />
          </div>
