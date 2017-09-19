@@ -2,6 +2,8 @@
 import React, { Component, PropTypes } from 'react'
 import moment from 'moment'
 
+import { Map, Marker } from 'react-amap';
+
 import './index.less'
 
 class Home extends React.Component {
@@ -15,6 +17,8 @@ class Home extends React.Component {
     render() {
         return <div>
             <div className="app-welcome">welcome to clond crmweb</div>
+            <div className="demo-class">
+            </div>
         </div>
     }
 }

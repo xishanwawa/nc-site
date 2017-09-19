@@ -34,6 +34,11 @@ const rootRoutes = {
           ])
         })
       },
+      onEnter: function (nextState, replaceState) {
+        debugger
+        console.log(nextState)
+        console.log(localStorage.openKeys)
+      }
     },
     {
       path: '*',

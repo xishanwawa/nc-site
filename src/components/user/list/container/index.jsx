@@ -23,8 +23,10 @@ class List extends React.Component {
   }
 
   render() {
+    let { $$stateuser, $$stateALL } = this.props;
+
     const columns = [{
-      title: 'Name',
+      title: 'Name111',
       dataIndex: 'name',
       render: text => <a href="#">{text}</a>,
     }, {
@@ -73,7 +75,8 @@ class List extends React.Component {
 //绑定状态到组件props
 function mapStateToProps(state, ownProps) {
   return {
-    $$state: state.userlist
+    $$stateuser: state.userlist,
+    $$stateALL: state
   }
 }
 

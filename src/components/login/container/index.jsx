@@ -7,73 +7,67 @@ import "./index.less"
 
 const FormItem = Form.Item;
 
-class LoginForm extends React.Component {
-    constructor(props){
-        super(props);
-    }
-
-    componentDidMount() {
-    }
-
-    handleSubmit = (e) => {
-        e.preventDefault();
+class NormalLoginForm extends React.Component {
+  componentDidMount() {
+    // To disabled submit button at the beginning.
+    this.props.form.validateFields();
+  }
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values);
         browserHistory.push('/crmweb')
-    }
-    
-    render() {
+      }
+    });
+  }
+  render() {
+    const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
 
-        const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
-        // Only show error after a field is touched.
-        const userError = isFieldTouched('user') && getFieldError('user');
-        const passwordError = isFieldTouched('password') && getFieldError('password');
-        return (
-            <div className="login-form">
-                
-                <Form onSubmit={this.handleSubmit} width={300}>
-                    <FormItem
-                        validateStatus={userError ? 'error' : ''}
-                        help={userError || ''}
-                    >
-                        {getFieldDecorator('user', {
-                            rules: [{ required: true, message: '不能为空!' }],
-                        })(
-                            <Input placeholder="用户名..." />
-                        )}
-                    </FormItem>
-                    <FormItem
-                        validateStatus={passwordError ? 'error' : ''}
-                        help={passwordError || ''}
-                    >
-                        {getFieldDecorator('password', {
-                            rules: [{ required: true, message: '不能为空!' }],
-                        })(
-                            <Input type="password" placeholder="密码..." />
-                        )}
-                    </FormItem>
-                    <FormItem>
-                        {getFieldDecorator('remember', {
-                            valuePropName: 'checked',
-                            initialValue: true,
-                        })(
-                            <Checkbox >
-                                记住状态
-                            </Checkbox>
-                        )}
-                        <a style={{ float: "right" }} href="">忘记密码</a>
-                        <Button
-                            type="primary"
-                            htmlType="submit"
-                            disabled={hasErrors(getFieldsError())}
-                            style={{ width: "100%" }}
-                        >
-                            登录
-                        </Button>
-                    </FormItem>
-                </Form>
-            </div>
-        );
-    }
+    // Only show error after a field is touched.
+    const userNameError = isFieldTouched('userName') && getFieldError('userName');
+    const passwordError = isFieldTouched('password') && getFieldError('password');
+
+    return (
+      <Form onSubmit={this.handleSubmit} className="login-form">
+        <FormItem
+          validateStatus={userNameError ? 'error' : ''}
+          help={userNameError || ''}
+        >
+          {getFieldDecorator('userName', {
+            rules: [{ required: true, message: '请输入姓名!' }],
+          })(
+            <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="姓名" />
+          )}
+        </FormItem>
+        <FormItem
+          validateStatus={passwordError ? 'error' : ''}
+          help={passwordError || ''}
+        >
+          {getFieldDecorator('password', {
+            rules: [{ required: true, message: '请输入密码!' }],
+          })(
+            <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="密码" />
+          )}
+        </FormItem>
+        <FormItem>
+          {getFieldDecorator('remember', {
+            valuePropName: 'checked',
+            initialValue: true,
+          })(
+            <Checkbox>记住密码</Checkbox>
+          )}
+          <a className="login-form-forgot" href="">忘记密码</a>
+          <div>
+          <Button type="primary" disabled={hasErrors(getFieldsError())} htmlType="submit" className="login-form-button">登录</Button>
+          </div>
+        </FormItem>
+      </Form>
+    );
+  }
 }
+
+const WrappedNormalLoginForm = Form.create()(NormalLoginForm);
 
 
 
@@ -82,9 +76,6 @@ function hasErrors(fieldsError) {
         return fieldsError[field]
     });
 }
-
-
-const Login = Form.create()(LoginForm);
 
 
 class LoginCon extends React.Component {
@@ -100,7 +91,7 @@ class LoginCon extends React.Component {
             <div className="login-box" >
                <div className="login-bg">
                     <div className="login-tit">Cloud CRM</div>
-                    <Login login = {this.props.action.login} />
+                    <WrappedNormalLoginForm login = {this.props.action.login} />
                </div>
             </div>
         );

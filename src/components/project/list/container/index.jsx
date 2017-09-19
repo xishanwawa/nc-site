@@ -15,10 +15,10 @@ import * as Actions from "../action"
 class List extends React.Component {
   constructor(props) {
     super(props)
-    var start  = moment().startOf('week');
-    var end    = moment().endOf('week');
+    // var start  = moment().startOf('week');
+    // var end    = moment().endOf('week');
 
-    debugger
+    // debugger
     this.state = {
       date : "2017-09-12"
     }

@@ -11,7 +11,7 @@ export default class LeftMenu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedKeys:[1]
+            selectedKeys:[]
         }
     }
 
@@ -19,10 +19,17 @@ export default class LeftMenu extends React.Component {
     }
 
     onSelect = ( item ) => {
-        // debugger
-        // console.log(item)
+        debugger
+        localStorage.selectedKeys = item.keyPath;
         this.setState({
             selectedKeys:item.keyPath
+        })
+    }
+
+    onOpenChange = (openKeys) => {
+        localStorage.openKeys = openKeys;
+        this.setState({
+            openKeys
         })
     }
 
@@ -90,16 +97,21 @@ export default class LeftMenu extends React.Component {
         //        {tree(data)}
         //     </Menu>
         // )
-
+        
+        //let openKeys = this.state.openKeys;
+        let localOpenKeys = localStorage.openKeys ? localStorage.openKeys.split(",") : [];
+        let localSelectedKeys = localStorage.selectedKeys ? localStorage.selectedKeys.split(",") : [];
 
         return (
             <Menu
-                defaultSelectedKeys = {["1"]}
-                selectedKeys = {this.state.selectedKeys}
+                defaultSelectedKeys = {[]}
+                selectedKeys = {localSelectedKeys}
                 mode="inline"
-                inlineCollapsed={this.props.collapsed}
+                inlineCollapsed = {this.props.collapsed}
                 theme={"dark"}
                 onSelect = {this.onSelect}
+                onOpenChange = {this.onOpenChange}
+                openKeys = {localOpenKeys}
             >
                 <Menu.Item key="1">
                     <Link to="/crmweb">
