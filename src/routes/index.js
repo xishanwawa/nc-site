@@ -33,11 +33,6 @@ const rootRoutes = {
             require('./routes/user').default
           ])
         })
-      },
-      onEnter: function (nextState, replaceState) {
-        debugger
-        console.log(nextState)
-        console.log(localStorage.openKeys)
       }
     },
     {

@@ -12,9 +12,40 @@
 
 .logger {
     float : right;
-    color : #ffffff;
-    width:100px;
+    margin-right: 10px;
     height:50px;
     line-height: 50px;
     font-size:14px;
+    .ant-menu-horizontal {
+        border-bottom: 0px;
+        font-size: 12px;
+    }
+    .ant-menu-submenu-horizontal {
+        height: 60px;
+        &:hover {
+            border: 0;
+        }
+    }
+    .ant-menu-submenu-selected {
+        border: 0;
+        &:hover {
+            border: 0;
+        }
+    }
+    .ant-menu-submenu-title {
+        height: 60px;
+        border: 0;
+        &:hover {
+            border: 0;
+        }
+    }
+    .ant-avatar {
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+    .ant-dropdown-link {
+        line-height: 60px;
+        height: 60px;
+        display: inline-block;
+    }
 }
