@@ -11,6 +11,7 @@ var portNumber = '3000';
 module.exports = {
 	entry: {
           main: __dirname + "/src/main.jsx",  //入口文件
+		  //vendor1: ['redux', 'react-redux', 'react-router']
 		  vendor: ['redux', 'react-redux', 'react-router']
 	},
 	output: {
